@@ -44,26 +44,30 @@ A MERN-stack loan management system where customers can apply for loans and trac
         Approve or Reject loans
 
 
-📁 Folder Structure
-    project-root/
-    │
-    ├── backend/
-    │   ├── controllers/
-    │   ├── middleware/
-    │   ├── models/
-    │   ├── routes/
-    │   ├── services/
-    │   ├── server.js
-    │   └── .env
-    │
-    └── frontend/
-        ├── src/
-        │   ├── components/
-        │   ├── pages/
-        │   ├── context/
-        │   └── App.jsx
-        ├── index.html
-        └── vite.config.js
+## 📁 Folder Structure
+
+```
+project-root/
+│
+├── backend/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── server.js
+│   └── .env
+│
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── pages/
+    │   ├── context/
+    │   └── App.jsx
+    ├── index.html
+    └── vite.config.js
+```
+
 
 
 ⚙️ Backend Setup
