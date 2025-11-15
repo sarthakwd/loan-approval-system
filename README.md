@@ -1,3 +1,8 @@
+![React](https://img.shields.io/badge/Frontend-React-blue)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
+![Express](https://img.shields.io/badge/API-Express-lightgrey)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
+
 Loan Approval System
 
 A MERN-stack loan management system where customers can apply for loans and track their eligibility status, while officers can review and approve/reject applications. The project uses MongoDB, Express, React, Node.js, and JWT authentication.
