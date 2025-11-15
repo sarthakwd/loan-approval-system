@@ -255,20 +255,6 @@ npm run dev
 
 ---
 
-## 📦 Submission Checklist
-
-- [x] Backend complete  
-- [x] Frontend complete  
-- [x] JWT authentication implemented  
-- [x] Loan eligibility logic added  
-- [x] API testing on Postman  
-- [x] README.md complete  
-- [x] Customer dashboard working  
-- [x] Officer dashboard working  
-- [x] 5–10 minute walkthrough video ready  
-
----
-
 ## 👤 Author
 
 **Sarthak Chauhan**  
