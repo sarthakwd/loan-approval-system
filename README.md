@@ -3,46 +3,52 @@
 ![Express](https://img.shields.io/badge/API-Express-lightgrey)
 ![MongoDB](https://img.shields.io/badge/Database-MongoDB-brightgreen)
 
-Loan Approval System
+# Loan Approval System
 
-A MERN-stack loan management system where customers can apply for loans and track their eligibility status, while officers can review and approve/reject applications. The project uses MongoDB, Express, React, Node.js, and JWT authentication.
+A MERN–stack loan management system where customers can apply for loans and track their eligibility status, while officers review and approve/reject applications. The project uses MongoDB, Express, React, Node.js, and JWT authentication.
 
-🚀 Tech Stack
-    Frontend
-        React.js (Vite)
-        React Router DOM
-        Axios
-        Bootstrap 5
-        React Toastify
+---
 
-    Backend
-        Node.js
-        Express.js
-        MongoDB + Mongoose
-        JWT Authentication
-        bcrypt.js
-        CORS
+## 🚀 Tech Stack
 
-    Tools
-        Postman
-        MongoDB Compass / Atlas
+### **Frontend**
+- React.js (Vite)
+- React Router DOM
+- Axios
+- Bootstrap 5
+- React Toastify
 
+### **Backend**
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT Authentication
+- bcrypt.js
+- CORS
 
-📌 Features
-    🔐 Authentication
-        Register / Login (JWT-based)
-        Role: Customer or Loan Officer
+### **Tools**
+- Postman
+- MongoDB Compass / Atlas
 
-    👤 Customer Features
-        Apply for loan
-        View list of all loan applications
-        Check loan status
-        View eligibility score
+---
 
-    🧑‍💼 Officer Features
-        View all pending loan applications
-        Approve or Reject loans
+## 📌 Features
 
+### 🔐 **Authentication**
+- Register / Login (JWT-based)
+- Role-based access: **Customer** or **Loan Officer**
+
+### 👤 **Customer Features**
+- Apply for loans  
+- View list of all loan applications  
+- Check loan status  
+- View eligibility score  
+
+### 🧑‍💼 **Officer Features**
+- View all pending loan applications  
+- Approve or Reject loans  
+
+---
 
 ## 📁 Folder Structure
 
@@ -68,137 +74,202 @@ project-root/
     └── vite.config.js
 ```
 
+---
 
+## ⚙️ Backend Setup
 
-⚙️ Backend Setup
-    1.Install Dependencies
-        cd backend
-        npm install
+### **1. Install dependencies**
+```bash
+cd backend
+npm install
+```
 
-    2.Create .env file
-        MONGO_URI=your_mongodb_connection
-        JWT_SECRET=your_secret_key
-        PORT=8000
+### **2. Create `.env` file**
+```
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_secret_key
+PORT=8000
+```
 
-    3. Start backend
-        npm start
+### **3. Start backend**
+```bash
+npm start
+```
 
-    Backend runs on:
-    👉 http://localhost:8000
+Backend runs on:  
+👉 http://localhost:8000
 
+---
 
-🎨 Frontend Setup
-    1. Install dependencies
-        cd frontend
-        npm install
+## 🎨 Frontend Setup
 
-    2. Start frontend
-        npm run dev
+### **1. Install dependencies**
+```bash
+cd frontend
+npm install
+```
 
-    Frontend runs on:
-    👉 http://localhost:5173
+### **2. Start frontend**
+```bash
+npm run dev
+```
 
+Frontend runs on:  
+👉 http://localhost:5173
 
-🗄️ MongoDB Models
-    User Model
-    {
-        name: String,
-        email: { type: String, required: true, unique: true },
-        passwordHash: String,
-        role: { type: String, enum: ['CUSTOMER','OFFICER'], required: true }
-    }
+---
 
-    Customer Model
-    {
-        userId: ObjectId,
-        income: Number,
-        creditScore: Number
-    }
+## 🗄️ MongoDB Models
 
-    Officer Model
-    {
-        userId: ObjectId,
-        branch: String
-    }
+### **User Model**
+```js
+{
+ name: String,
+ email: { type: String, required: true, unique: true },
+ passwordHash: String,
+ role: { type: String, enum: ['CUSTOMER','OFFICER'], required: true }
+}
+```
 
-    Loan Application Model
-    {
-        customerId: ObjectId,
-        officerId: ObjectId,
-        amountRequested: Number,
-        tenureMonths: Number,
-        interestRate: Number,
-        status: { type: String, enum: ['PENDING','APPROVED','REJECTED'], default: 'PENDING' },
-        eligibilityScore: Number
-    }
+### **Customer Model**
+```js
+{
+ userId: ObjectId,
+ income: Number,
+ creditScore: Number
+}
+```
 
+### **Officer Model**
+```js
+{
+ userId: ObjectId,
+ branch: String
+}
+```
 
-🧮 Loan Eligibility Logic
-    Normalization
-        incomeNorm = income / maxIncome
-        creditScoreNorm = creditScore / 900
+### **Loan Application Model**
+```js
+{
+ customerId: ObjectId,
+ officerId: ObjectId,
+ amountRequested: Number,
+ tenureMonths: Number,
+ interestRate: Number,
+ status: { type: String, enum: ['PENDING','APPROVED','REJECTED'], default: 'PENDING' },
+ eligibilityScore: Number
+}
+```
 
-    Final Score
-        score = (0.6 * creditScoreNorm) + (0.4 * incomeNorm)
+---
 
-    Decision
-        If score >= threshold → APPROVED
-        Else → REJECTED
+## 🧮 Loan Eligibility Logic
 
-    This logic runs in loanService.evaluateLoan().
+### **Normalization**
+```
+incomeNorm = income / maxIncome
+creditScoreNorm = creditScore / 900
+```
 
+### **Final Score**
+```
+score = (0.6 * creditScoreNorm) + (0.4 * incomeNorm)
+```
 
-🔌 API Documentation
+### **Decision**
+```
+If score >= threshold → APPROVED
+Else → REJECTED
+```
 
-    AUTH APIs
-        POST /auth/register
-        Registers a new user.
+This logic is implemented inside the backend loan evaluation service.
 
-        POST /auth/login
-        Logs in and returns JWT token.
+---
 
-    LOAN APIs
-        POST /loans/apply
-        Create a loan application.
+## 🔌 API Documentation
 
-        GET /loans/:id/status
-        Get loan status & eligibility score.
+---
 
-    OFFICER APIs
-        GET /officer/loans/pending
-        Fetch all pending loan applications.
+### ⭐ AUTH APIs
 
-        POST /officer/loans/:id/review
-        Approve / Reject a loan.
+#### **POST /auth/register**
+Registers a new user.
 
+#### **POST /auth/login**
+Logs in and returns JWT token.
 
-🔐 JWT Authentication
+---
 
-    All protected routes require:
-        Authorization: Bearer <token>
+### ⭐ LOAN APIs
 
-        Middleware verifies:
-            Token
-            User ID
-            Role
-            Attaches req.user
-        Officer routes are restricted to officer role only.
+#### **POST /loans/apply**
+Create a loan application.
 
+#### **GET /loans/:id/status**
+Fetch loan approval status & eligibility score.
 
-▶️ How to Run the Project
-    Step 1: Start backend
-        cd backend
-        npm start
+---
 
-    Step 2: Start frontend
-        cd frontend
-        npm run dev
+### ⭐ OFFICER APIs
 
-    Step 3: Visit Application
+#### **GET /officer/loans/pending**
+Fetch all pending loan applications.
 
-    👉 http://localhost:5173
+#### **POST /officer/loans/:id/review**
+Approve or Reject a loan.
 
+---
 
-👤 Author
-    Sarthak Chauhan
-    Loan Approval System – MERN Project
+## 🔐 JWT Authentication
+
+All protected routes require:
+
+```
+Authorization: Bearer <token>
+```
+
+JWT middleware:
+- Verifies token  
+- Extracts userId & role  
+- Attaches user to request  
+- Restricts officer-only endpoints  
+
+---
+
+## ▶️ Running the Project
+
+### **Start backend**
+```bash
+cd backend
+npm start
+```
+
+### **Start frontend**
+```bash
+cd frontend
+npm run dev
+```
+
+### **Open application**
+👉 http://localhost:5173
+
+---
+
+## 📦 Submission Checklist
+
+- [x] Backend complete  
+- [x] Frontend complete  
+- [x] JWT authentication implemented  
+- [x] Loan eligibility logic added  
+- [x] API testing on Postman  
+- [x] README.md complete  
+- [x] Customer dashboard working  
+- [x] Officer dashboard working  
+- [x] 5–10 minute walkthrough video ready  
+
+---
+
+## 👤 Author
+
+**Sarthak Chauhan**  
+Loan Approval System – MERN Project
